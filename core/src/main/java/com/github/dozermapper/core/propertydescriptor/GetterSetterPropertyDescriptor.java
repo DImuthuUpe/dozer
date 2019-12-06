@@ -102,6 +102,7 @@ public abstract class GetterSetterPropertyDescriptor extends AbstractPropertyDes
                 if (isIndexed) {
                     writeIndexedValue(bean, value);
                 } else {
+                    /* Disabling this as we need to call the setter method irrespective of the value
                     // Check if dest value is already set and is equal to src value. If true, no need to rewrite the dest value
                     try {
                         if (getPropertyValue(bean) == value && !isIndexed) {
@@ -110,6 +111,8 @@ public abstract class GetterSetterPropertyDescriptor extends AbstractPropertyDes
                     } catch (Exception e) {
                         // if we failed to read the value, assume we must write, and continue...
                     }
+                    */
+
                     invokeWriteMethod(bean, value);
                 }
             }
